@@ -1,0 +1,11 @@
+const express = require('express')
+const app = express()
+const database = require('./config/db')
+const CarAPI = require('./router/CarAPI')
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.listen(3000, () => {
+    console.log('Server running on port 3000')
+})
+database.connect()
+app.use('/api' , CarAPI )
